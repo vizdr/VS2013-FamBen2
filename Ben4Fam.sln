@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben4Fam", "Ben4Fam\Ben4Fam.csproj", "{26B038BB-1051-40CB-BE53-1444BFCB5A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben4Fam.Tests", "Ben4Fam.Tests\Ben4Fam.Tests.csproj", "{796D6693-E3F7-409F-ADC1-E86065677ED7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26B038BB-1051-40CB-BE53-1444BFCB5A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B038BB-1051-40CB-BE53-1444BFCB5A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B038BB-1051-40CB-BE53-1444BFCB5A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B038BB-1051-40CB-BE53-1444BFCB5A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{796D6693-E3F7-409F-ADC1-E86065677ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796D6693-E3F7-409F-ADC1-E86065677ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796D6693-E3F7-409F-ADC1-E86065677ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796D6693-E3F7-409F-ADC1-E86065677ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
