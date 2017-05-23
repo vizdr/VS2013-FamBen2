@@ -330,13 +330,26 @@ namespace Ben4Fam.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            try
             {
-                return GetErrorResult(result);
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                            {
+                                var exceptionTextEnum = result.Errors; //.Aggregate("User Creation Failed - Identity Exception. Errors were: \n\r\n\r", (current, error) => current + (" - " + error + "\n\r"));
+                                string exceptionText = String.Empty;
+                                foreach (var item in exceptionTextEnum)
+                                {
+                                    exceptionText += item.ToString();
+                                }
+                                throw new Exception(exceptionText);
+                                //return GetErrorResult(result);
+                            }
             }
-
+            catch (Exception e)
+            {
+               string er = e.Message;              
+                throw;
+            }
             return Ok();
         }
 

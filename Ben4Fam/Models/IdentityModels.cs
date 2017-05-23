@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+using Ben4Fam.Areas.Catalog.Models;
 
 namespace Ben4Fam.Models
 {
@@ -18,7 +20,7 @@ namespace Ben4Fam.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public  class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -29,5 +31,14 @@ namespace Ben4Fam.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Person> People { get; set; }
+        public DbSet<Product> Products { get; set; }
+        //public System.Data.Entity.DbSet<Ben4Fam.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Turnover>  Turnovers { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Acceptor> Acceptors { get; set; }
+        public DbSet<ProdGroup> ProdGroups { get; set; }
+        public DbSet<ProdSubGroup> ProdSubGroups { get; set; }
     }
 }

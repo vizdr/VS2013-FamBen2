@@ -1,28 +1,30 @@
 namespace Ben4Fam.Areas.Catalog.Models
 {
+    using Ben4Fam.Models;
     using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
 
-    public class ProductModels : DbContext
-    {
-        // Your context has been configured to use a 'ProductModels' connection string from your application's 
-        // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'Ben4Fam.Areas.Catalog.Models.ProductModels' database on your LocalDb instance. 
-        // 
-        // If you wish to target a different database and/or database provider, modify the 'ProductModels' 
-        // connection string in the application configuration file.
-        public ProductModels()
-            : base("name=ProductModels")
-        {
-        }
+    //public class ProductModels : ApplicationDbContext
+    //{
+    //    // Your context has been configured to use a 'ProductModels' connection string from your application's 
+    //    // configuration file (App.config or Web.config). By default, this connection string targets the 
+    //    // 'Ben4Fam.Areas.Catalog.Models.ProductModels' database on your LocalDb instance. 
+    //    // 
+    //    // If you wish to target a different database and/or database provider, modify the 'ProductModels' 
+    //    // connection string in the application configuration file. // base("name=DefaultConnection")
+    //    public ProductModels()
+    //        : base()
+    //    {
+    //    }
+    //    // Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+    //    // Add a DbSet for each entity type that you want to include in your model. For more information 
+    //    // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        // Add a DbSet for each entity type that you want to include in your model. For more information 
-        // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
-
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
-    }
+    //    // public virtual DbSet<MyEntity> MyEntities { get; set; }
+    //    public DbSet<Product> Products { get; set; }
+    //}
 
     //public class MyEntity
     //{
@@ -34,10 +36,13 @@ using System.Linq;
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
-        public Enum Currency { get; set; }
         public int ProdGroupId { get; set; }
-        public ProdGroup Group { get; set; }
+        public ProdGroup ProdGroup { get; set; }
+        public ICollection<Turnover> Turnovers { get; set; }
+        public Product()
+        {
+            Turnovers = new List<Turnover>();
+        }
     }
 
     public class Service : Product
@@ -47,28 +52,27 @@ using System.Linq;
 
     public class Thing : Product
     {
-        public DateTime Lifetime { get; set; }
-        //public float Qty { get; set; }
-        public Enum Unit { get; set; }
-        public bool IsInWork { get; set; }
-        public bool IsStored { get; set; }
+        public DateTime LifeTime { get; set; }
+        public DateTime GarantieTime { get; set; }
+        //public ThingUnit Unit { get; set; }
+
     }
 
     public class Wearable : Thing
     {
-        public Enum Season { get; set; }
-        public Enum Color { get; set; }
+        //public Seasons Season { get; set; }
+        //public Color Color { get; set; }
         public string Material { get; set; }
-        public Enum UsageType { get; set; }
+        //public UsageType UsageType { get; set; }
         public int ProdSubGroupId { get; set; }
         public ProdSubGroup ProdSubgroup { get; set; }
 
     }
 
-    public class Applicable : Thing
-    {
-        public Enum NeedType { get; set; }
-    }
+    //public class Applicable : Thing
+    //{
+    //    public Enum NeedType { get; set; }
+    //}
 
     public class ProdGroup
     {
@@ -91,4 +95,26 @@ using System.Linq;
             Wearables = new List<Wearable>();
         }
     }
+
+
+
+    //public enum ThingUnit
+    //{
+    //    Item, Kg, Meter, Sec, Liter
+    //}
+
+    //public enum Seasons
+    //{
+    //    Winter, DemiSeason, Sommer
+    //}
+
+    //public enum Color
+    //{
+    //    Black, White, Gray, Yellow, Red, Blue, Green, Brown
+    //}
+
+    //public enum UsageType
+    //{
+    //    EveryDay, Home, Sport, Presentation, Work, Holiday
+    //}
 }
